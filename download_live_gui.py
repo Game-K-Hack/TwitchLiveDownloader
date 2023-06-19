@@ -1,6 +1,5 @@
 from threading import Thread
-from tkinter import * 
-from tkinter import filedialog
+from tkinter import PhotoImage, Tk, LabelFrame, StringVar, Label, Entry, Spinbox, Button, filedialog
 import requests
 import datetime
 import time
@@ -55,13 +54,6 @@ def humanbytes(B):
         return '{0:.2f} GB'.format(B / GB)
     elif TB <= B:
         return '{0:.2f} TB'.format(B / TB)
-
-# def _start_pub_remover():
-#     os.system(f"cd {os.path.dirname(__file__)} && start /b python farmer.py")
-
-# def _stop_pub_remover():
-#     pid = open('./pid', 'r', encoding='utf8').read()
-#     os.system(f"taskkill /PID {pid} /F")
 
 def _check_var():
     ok = True
@@ -169,13 +161,11 @@ def download(channel_name, id_vid):
                 if res not in ultim[-15:]:
                     nami += 1
                     ultim.append(res)
-                    # path = f"E:/Twitch/{channel_name}/{id_vid}"
                     if not os.path.exists(out_dir_path):
                         os.makedirs(out_dir_path)
                     open(f"{out_dir_path}/{channel_name}_{nami}.ts", "wb").write(res)
 
             ultim = ultim[-150:]
-            # print("[INFO] Time:", time.time()-st)
             _exet(time.time()-st)
             Thread(target=lambda:update_image(f"{out_dir_path}/{channel_name}_{nami}.ts")).start()
             nberr = 0
@@ -230,18 +220,10 @@ l_apikey = Label(l, text="API key")
 l_apikey.grid(row=3, column=0)
 i_apikey = Entry(l, textvariable=apikey_value, width=30, show="*")
 i_apikey.grid(row=3, column=1)
-# pubremover_value = IntVar(value=0)
-# def _checkbox():
-#     if pubremover_value.get():
-#         _start_pub_remover()
-#     else:
-#         _stop_pub_remover()
-# cb_pubremover = Checkbutton(l, text="Pub remover", variable=pubremover_value, command=_checkbox)
-# cb_pubremover.grid(row=3, column=1)
 
 l = LabelFrame(root, text="Video", padx=10, pady=10)
 l.place(x=305, y=10)
-photo = PhotoImage(file=os.path.join(os.path.dirname(__file__), "assets", "wallpaper-resized.png"))
+photo = PhotoImage(file=os.path.join(os.path.dirname(__file__), "images", "wallpaper-resized.png"))
 video = Label(l, width=355, height=200, image=photo)
 video.pack()
 
