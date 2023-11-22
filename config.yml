@@ -1,2 +1,9 @@
+lang: en
 client_id: kimne78kx3ncx6brgo4mv6wki5h1ko
-access_token: 
+default:
+  access_token: 
+  video_name: 
+  wait_time: 5
+  username: 
+  out: 
+  image: ./images/wallpaper.png
