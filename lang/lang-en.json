@@ -1,0 +1,23 @@
+{
+    "setting": {
+        "label": "Setting", 
+        "username": "Username", 
+        "videoname": "Video Name", 
+        "waittime": "Wait Time", 
+        "apikey": "API Key"
+    }, 
+    "value": {
+        "label": "Value", 
+        "status": "Status", 
+        "time": "Time", 
+        "size": "Size", 
+        "executiontime": "Execution Time"
+    },
+    "video": "Video", 
+    "outdir": "Out Directory", 
+    "action": "Action", 
+    "quit": "Quit", 
+    "browse": "Browse", 
+    "stop": "Stop", 
+    "download": "Download"
+}
