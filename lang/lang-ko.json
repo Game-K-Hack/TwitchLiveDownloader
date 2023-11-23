@@ -1,0 +1,49 @@
+{
+    "setting": {
+        "label": "설정",
+        "username": "사용자 이름",
+        "videoname": "비디오 이름",
+        "waittime": "대기 시간",
+        "token": "토큰"
+    },
+    "value": {
+        "label": "값",
+        "status": "상태",
+        "time": "시간",
+        "size": "크기",
+        "executiontime": "실행 시간"
+    },
+    "video": "비디오",
+    "outdir": "출력 디렉토리",
+    "quit": "종료",
+    "browse": "찾아보기",
+    "stop": "정지",
+    "download": "다운로드",
+    "error": {
+        "streamer_not_found": [
+            "스트리머를 찾을 수 없음",
+            "이 스트리머를 찾을 수 없습니다"
+        ],
+        "live_not_found": [
+            "라이브를 찾을 수 없음",
+            "이 스트리머는 라이브 중이 아닙니다"
+        ],
+        "no_path_set": [
+            "주의",
+            "선택된 폴더가 없습니다"
+        ]
+    },
+    "action": {
+        "label": "작업",
+        "start": "다운로드 시작",
+        "get_sig": "서명 얻기",
+        "get_all_quality": "모든 스트림 품질 얻기",
+        "keep_best_quality": "최상의 비디오 품질 유지",
+        "write_to": "다음으로 작성",
+        "wait": "대기"
+    },
+    "status": {
+        "download": "다운로드 중",
+        "stop": "정지"
+    }
+}

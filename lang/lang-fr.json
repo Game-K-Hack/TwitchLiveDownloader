@@ -1,0 +1,47 @@
+{
+    "setting": {
+        "label": "Paramètres", 
+        "username": "Utilisateur", 
+        "videoname": "Nom de vidéo", 
+        "waittime": "Temps d'attente", 
+        "token": "Token"
+    }, 
+    "value": {
+        "label": "Valeurs", 
+        "status": "Statut", 
+        "time": "Temps", 
+        "size": "Taille", 
+        "executiontime": "Temps d'exécution"
+    },
+    "video": "Vidéo", 
+    "outdir": "Dossier de sortie", 
+    "quit": "Quitter", 
+    "browse": "Parcourir", 
+    "stop": "Stop", 
+    "download": "Télécharger", 
+    "error": {
+        "streamer_not_found": [
+            "Streamer non trouvé", 
+            "Ce streamer n'a pas été trouvé"
+        ], "live_not_found": [
+            "Live non trouvé", 
+            "Ce streamer n'est pas en live"
+        ], "no_path_set": [
+            "Attention", 
+            "Aucun dossier n'a été sélectionné"
+        ]
+    }, 
+    "action": {
+        "label": "Action", 
+        "start": "Démarrage du téléchargement", 
+        "get_sig": "Récupération de la signature", 
+        "get_all_quality": "Récupération des différentes qualités de stream", 
+        "keep_best_quality": "Cherche la meilleure qualité vidéo", 
+        "write_to": "Ecriture dans", 
+        "wait": "Attendre"
+    }, 
+    "status": {
+        "download": "Téléchargement", 
+        "stop": "Stop"
+    }
+}

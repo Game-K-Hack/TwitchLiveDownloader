@@ -1,0 +1,49 @@
+{
+    "setting": {
+        "label": "設定",
+        "username": "ユーザー名",
+        "videoname": "ビデオ名",
+        "waittime": "待機時間",
+        "token": "トークン"
+    },
+    "value": {
+        "label": "値",
+        "status": "ステータス",
+        "time": "時間",
+        "size": "サイズ",
+        "executiontime": "実行時間"
+    },
+    "video": "ビデオ",
+    "outdir": "出力ディレクトリ",
+    "quit": "終了",
+    "browse": "参照",
+    "stop": "停止",
+    "download": "ダウンロード",
+    "error": {
+        "streamer_not_found": [
+            "ストリーマーが見つかりません",
+            "このストリーマーは見つかりませんでした"
+        ],
+        "live_not_found": [
+            "ライブが見つかりません",
+            "このストリーマーはライブ中ではありません"
+        ],
+        "no_path_set": [
+            "注意",
+            "フォルダが選択されていません"
+        ]
+    },
+    "action": {
+        "label": "アクション",
+        "start": "ダウンロード開始",
+        "get_sig": "署名の取得",
+        "get_all_quality": "すべてのストリーム品質を取得",
+        "keep_best_quality": "最高のビデオ品質を保持",
+        "write_to": "書き込み先",
+        "wait": "待つ"
+    },
+    "status": {
+        "download": "ダウンロード中",
+        "stop": "停止"
+    }
+}
