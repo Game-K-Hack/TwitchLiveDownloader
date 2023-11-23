@@ -1,4 +1,4 @@
-from tkinter import LabelFrame, Label, Spinbox, StringVar, Entry, IntVar
+from tkinter import LabelFrame, Label, Spinbox, StringVar, Entry, IntVar, Canvas, W, E
 from core import Core
 import os
 
@@ -7,7 +7,7 @@ class SettingFrame:
         self.username = StringVar(value=Core.DEFAULT["username"])
         self.vidname = StringVar(value=Core.DEFAULT["video_name"])
         self.waittime = IntVar(value=int(Core.DEFAULT["wait_time"]))
-        self.apikey = StringVar(value=Core.DEFAULT["access_token"])
+        self.token = StringVar(value=Core.DEFAULT["access_token"])
 
         self.labelframe = LabelFrame(
             root, 
@@ -19,47 +19,46 @@ class SettingFrame:
         label_username = Label(
             self.labelframe, 
             text=Core.LANG["setting"]["username"])
-        label_username.grid(row=0, column=0)
+        label_username.grid(row=0, column=0, sticky=E)
         entry_username = Entry(
             self.labelframe, 
             textvariable=self.username, 
-            width=30)
-        entry_username.grid(row=0, column=1)
+            width=25)
+        entry_username.grid(row=0, column=1, sticky=W)
         # entry_username.bind("<FocusOut>", self.update_out_path)
 
         label_vidname = Label(
             self.labelframe, 
             text=Core.LANG["setting"]["videoname"])
-        label_vidname.grid(row=1, column=0)
+        label_vidname.grid(row=1, column=0, sticky=E)
         entry_vidname = Entry(
             self.labelframe, 
             textvariable=self.vidname, 
-            width=30)
-        entry_vidname.grid(row=1, column=1)
+            width=25)
+        entry_vidname.grid(row=1, column=1, sticky=W)
         # entry_vidname.bind("<FocusOut>", self.update_out_path)
 
         label_waittime = Label(
             self.labelframe, 
             text=Core.LANG["setting"]["waittime"])
-        label_waittime.grid(row=2, column=0)
+        label_waittime.grid(row=2, column=0, sticky=E)
         spinbox_waittime = Spinbox(
             self.labelframe, 
             from_=0, 
             to=30, 
             textvariable=self.waittime, 
-            width=28)
-        spinbox_waittime.grid(row=2, column=1)
+            width=23)
+        spinbox_waittime.grid(row=2, column=1, sticky=W)
         
-        label_apikey = Label(
+        label_token = Label(
             self.labelframe, 
-            text=Core.LANG["setting"]["apikey"])
-        label_apikey.grid(row=3, column=0)
-        entry_apikey = Entry(
+            text=Core.LANG["setting"]["token"])
+        label_token.grid(row=3, column=0, sticky=E)
+        entry_token = Entry(
             self.labelframe, 
-            textvariable=self.apikey, 
-            width=30, 
+            textvariable=self.token, 
+            width=25, 
             show="*")
-        entry_apikey.grid(row=3, column=1)
+        entry_token.grid(row=3, column=1, sticky=W)
 
-    # def update_out_path(self, pos=None):
-    #     Core.out_path.set(os.path.join(Core.out_path, self.username.get(), self.vidname.get()).replace("\\", "/"))
+        Canvas(self.labelframe, width=260, height=0).grid(row=4, column=0, columnspan=2)

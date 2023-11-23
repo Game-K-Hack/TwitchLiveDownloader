@@ -1,23 +1,49 @@
 {
     "setting": {
-        "label": "Setting", 
-        "username": "Username", 
-        "videoname": "Video Name", 
-        "waittime": "Wait Time", 
-        "apikey": "API Key"
-    }, 
+        "label": "Settings",
+        "username": "Username",
+        "videoname": "Video Name",
+        "waittime": "Wait Time",
+        "token": "Token"
+    },
     "value": {
-        "label": "Value", 
-        "status": "Status", 
-        "time": "Time", 
-        "size": "Size", 
+        "label": "Values",
+        "status": "Status",
+        "time": "Time",
+        "size": "Size",
         "executiontime": "Execution Time"
     },
-    "video": "Video", 
-    "outdir": "Out Directory", 
-    "action": "Action", 
-    "quit": "Quit", 
-    "browse": "Browse", 
-    "stop": "Stop", 
-    "download": "Download"
+    "video": "Video",
+    "outdir": "Output Directory",
+    "quit": "Quit",
+    "browse": "Browse",
+    "stop": "Stop",
+    "download": "Download",
+    "error": {
+        "streamer_not_found": [
+            "Streamer not found",
+            "This streamer was not found"
+        ],
+        "live_not_found": [
+            "Live not found",
+            "This streamer is not live"
+        ],
+        "no_path_set": [
+            "Attention",
+            "No folder has been selected"
+        ]
+    },
+    "action": {
+        "label": "Action",
+        "start": "Start Download",
+        "get_sig": "Get Signature",
+        "get_all_quality": "Get All Stream Qualities",
+        "keep_best_quality": "Keep the Best Video Quality",
+        "write_to": "Write to",
+        "wait": "Wait"
+    },
+    "status": {
+        "download": "Downloading",
+        "stop": "Stop"
+    }
 }

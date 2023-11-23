@@ -1,0 +1,49 @@
+{
+    "setting": {
+        "label": "设置",
+        "username": "用户名",
+        "videoname": "视频名称",
+        "waittime": "等待时间",
+        "token": "令牌"
+    },
+    "value": {
+        "label": "数值",
+        "status": "状态",
+        "time": "时间",
+        "size": "大小",
+        "executiontime": "执行时间"
+    },
+    "video": "视频",
+    "outdir": "输出目录",
+    "quit": "退出",
+    "browse": "浏览",
+    "stop": "停止",
+    "download": "下载",
+    "error": {
+        "streamer_not_found": [
+            "未找到流媒体",
+            "未找到此流媒体"
+        ],
+        "live_not_found": [
+            "未找到直播",
+            "此流媒体未在直播中"
+        ],
+        "no_path_set": [
+            "注意",
+            "未选择任何文件夹"
+        ]
+    },
+    "action": {
+        "label": "操作",
+        "start": "开始下载",
+        "get_sig": "获取签名",
+        "get_all_quality": "获取所有流媒体质量",
+        "keep_best_quality": "保留最佳视频质量",
+        "write_to": "写入到",
+        "wait": "等待"
+    },
+    "status": {
+        "download": "下载中",
+        "stop": "停止"
+    }
+}
