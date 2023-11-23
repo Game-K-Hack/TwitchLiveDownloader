@@ -2,13 +2,15 @@ from gui.main import MainFrame
 from gui.setting import SettingFrame
 from gui.value import ValueFrame
 from gui.video import VideoFrame
+from gui.action import ActionFrame
 from downloader import Downloader
-from tkinter import StringVar, PhotoImage, Label, Button, Canvas, filedialog
+from tkinter import PhotoImage, Button, messagebox
 from threading import Thread
 from core import Core
 import os
 
 root = MainFrame()
+af = ActionFrame(root)
 sf = SettingFrame(root)
 valf = ValueFrame(root)
 vidf = VideoFrame(root)
@@ -17,30 +19,10 @@ vidf = VideoFrame(root)
 default_img = PhotoImage(file=Core.DEFAULT["image"]).subsample(5)
 vidf.photo.configure(image=default_img)
 vidf.photo.image = default_img
-
 download_img = PhotoImage(file="./images/downloads.png")
 download_icon = download_img.subsample(15)
 stop_image = PhotoImage(file="./images/stop.png")
 stop_icon = stop_image.subsample(15)
-
-def browse_file(event:any=None):
-    Core.out_path = filedialog.askdirectory()
-    Core.out_directory.set(Core.out_path)
-
-cnv = Canvas(width=500, height=15, cursor="hand2")
-cnv.place(x=0, y=260)
-cnv.bind("<Button-1>", browse_file)
-labeloutdir = Label(root, text=Core.LANG["outdir"] + " :", cursor="hand2")
-labeloutdir.place(x=10, y=260)
-labeloutdir.bind("<Button-1>", browse_file)
-Core.out_directory = StringVar(value=Core.out_path)
-labelaction = Label(root, textvariable=Core.out_directory, cursor="hand2")
-labelaction.place(x=90, y=260)
-labelaction.bind("<Button-1>", browse_file)
-
-Label(root, text=Core.LANG["action"] + " :").place(x=45, y=280)
-Core.action = StringVar()
-Label(root, textvariable=Core.action).place(x=90, y=280)
 
 def change_status(is_download:bool) -> None:
     dwld.is_start = is_download
@@ -53,17 +35,20 @@ dwld = Downloader(change_status=change_status,
 
 def action_function():
     if action_button.cget("image") == str(download_icon):
+        if Core.out_path == "":
+            messagebox.showerror(*Core.LANG["error"]["no_path_set"])
+            return None
         change_status(True)
         Core.ACCESS_REQUEST["variables"]["login"] = sf.username.get()
         dwld.username = sf.username.get()
         dwld.video_name = sf.vidname.get()
-        dwld.access_token = sf.apikey.get()
+        dwld.access_token = sf.token.get()
         dwld.wait_time = sf.waittime.get()
         dwld.run()
     else:
         change_status(False)
 
-action_button = Button(root, border=0, command=lambda: Thread(target=action_function).start())
+action_button = Button(root, border=0, command=lambda: Thread(target=action_function).start(), cursor="hand2")
 action_button.place(x=645, y=260)
 
 action_function()

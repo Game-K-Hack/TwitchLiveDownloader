@@ -1,9 +1,8 @@
 from core import Core
 from gui.value import ValueFrame
 from gui.video import VideoFrame
-from tkinter import messagebox
+from tkinter import messagebox, PhotoImage
 from threading import Thread
-from tkinter import PhotoImage, Label
 import datetime
 import requests
 import urllib
@@ -25,7 +24,7 @@ class Downloader():
         self.is_start = True
 
     def get_signature(self) -> tuple[str,str]|None:
-        Core.action.set("Get signature")
+        Core.action.set(Core.LANG["action"]["get_sig"])
         # get signature of target streamer
         res = requests.post(
             url="https://gql.twitch.tv/gql", 
@@ -47,11 +46,11 @@ class Downloader():
         else:
             # if result is empty then stop this loop
             self.change_status(False)
-            messagebox.showwarning("Streameur/se non trouvé", "Ce streameur/se n'a pas été trouvé")
+            messagebox.showwarning(*Core.LANG["error"]["streamer_not_found"])
             return None
 
     def get_all_quality(self, signature:tuple[str,str]) -> str|None:
-        Core.action.set("Get all quality of stream")
+        Core.action.set(Core.LANG["action"]["get_all_quality"])
         tkn, sig = signature
         # get playlist of stream
         res = requests.get(
@@ -62,13 +61,13 @@ class Downloader():
         # and no frame has been retrieved previously
         if "transcode_does_not_exist" in m3u8 and len(self.frames) == 0:
             self.change_status()
-            messagebox.showwarning("Live non trouvé", "Ce streameur/se n'est plus en live")
+            messagebox.showwarning(*Core.LANG["error"]["live_not_found"])
             return None
         else:
             return m3u8
-        
+
     def get_url_of_best_quality(self, m3u8:str) -> str:
-        Core.action.set("Keep best quality")
+        Core.action.set(Core.LANG["action"]["keep_best_quality"])
         # search best quality
         quality_index, quality_value = None, 0
         # for all lines in playlist to search the best quality
@@ -84,12 +83,13 @@ class Downloader():
         return m3u8.split("\n")[quality_index+1]
 
     def download(self) -> None:
+
         # get signature of account
         signature = self.get_signature()
-        if signature is None: return None
+        if signature is None or not self.is_start: return None
         # get list all quality of stream
         m3u8 = self.get_all_quality(signature)
-        if m3u8 is None: return None
+        if m3u8 is None or not self.is_start: return None
         # get url of best quality of stream
         url = self.get_url_of_best_quality(m3u8)
         # get playlist of all files type TS
@@ -100,6 +100,9 @@ class Downloader():
         self.out_path = f"{Core.out_directory.get()}/{self.username}/{self.video_name}"
         # for all urls, download TS file
         for i in url_list:
+            if not self.is_start: return None
+            # start chronometer
+            startime = time.time()
             # get content of TS file
             res = requests.get(i, verify=Core.VERIFY).content
             # if the video frame was not downloaded then download
@@ -108,22 +111,21 @@ class Downloader():
                 if not os.path.exists(self.out_path):
                     os.makedirs(self.out_path)
                 Core.out_filename = f"{Core.ACCESS_REQUEST['variables']['login']}_{self.index_video}.ts"
-                Core.action.set("Written to " + Core.out_filename)
+                Core.action.set(Core.LANG["action"]["write_to"] + " " + Core.out_filename)
                 open(f"{self.out_path}/{Core.out_filename}", "wb").write(res)
                 self.index_video += 1
-                self.exectime = time.time()-self.startime
+                # calculate difference between end and start time to get time of execution
+                self.exectime = time.time()-startime
                 # upadte value on interface
                 Thread(target=self.update_value).start()
 
     def run(self) -> None:
         self.frames = []
         self.index_video = 0
-        Core.action.set("Start download")
+        Core.action.set(Core.LANG["action"]["start"])
         while self.is_start:
             # change status to download
             self.change_status(True)
-            # start chronometer
-            self.startime = time.time()
             # download stream
             self.download()
             # 
@@ -131,7 +133,7 @@ class Downloader():
             # wait time before
             for i in range(self.wait_time*2):
                 # display wait time on interface
-                Core.action.set("Wait " + str(int(self.wait_time-(i/2))) + " s")
+                Core.action.set(Core.LANG["action"]["wait"] + " " + str(int(self.wait_time-(i/2))) + " s")
                 # wait 0.5 second
                 time.sleep(0.5)
                 # check if download is cancel

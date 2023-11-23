@@ -26,7 +26,7 @@ class Core:
         }
     }
 
-    out_path:str = ""
+    out_path:str = "" if DEFAULT["out"] is None else DEFAULT["out"]
     out_filename:str = ""
     out_directory:StringVar
     action:StringVar
