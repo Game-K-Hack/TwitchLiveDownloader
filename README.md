@@ -5,8 +5,8 @@
 <br>
 
 <div align="center">
-  <a href="https://github.com/Game-K-Hack/TwitchLiveDownloader/releases/tag/1.0.2">
-    <img src="https://img.shields.io/static/v1?label=release&message=v1.0.2&color=blue" alt="Release - v1.0.2" />
+  <a href="https://github.com/Game-K-Hack/TwitchLiveDownloader/releases/tag/1.0.3">
+    <img src="https://img.shields.io/static/v1?label=release&message=v1.0.3&color=blue" alt="Release - v1.0.3" />
   </a>
   <a href="#">
     <img src="https://img.shields.io/static/v1?label=version&message=stable&color=green" alt="Version - Stable" />
