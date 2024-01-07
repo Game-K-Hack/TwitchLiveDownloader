@@ -81,9 +81,10 @@ class Downloader():
                     quality_index = index
         # return best quality and +1 to find stream url
         return m3u8.split("\n")[quality_index+1]
-
+    
     def download(self) -> None:
-
+        # start chronometer
+        startime = time.time()
         # get signature of account
         signature = self.get_signature()
         if signature is None or not self.is_start: return None
@@ -101,8 +102,6 @@ class Downloader():
         # for all urls, download TS file
         for i in url_list:
             if not self.is_start: return None
-            # start chronometer
-            startime = time.time()
             # get content of TS file
             res = requests.get(i, verify=Core.VERIFY).content
             # if the video frame was not downloaded then download
@@ -115,7 +114,7 @@ class Downloader():
                 open(f"{self.out_path}/{Core.out_filename}", "wb").write(res)
                 self.index_video += 1
                 # calculate difference between end and start time to get time of execution
-                self.exectime = time.time()-startime
+                self.exectime = time.time() - startime
                 # upadte value on interface
                 Thread(target=self.update_value).start()
 

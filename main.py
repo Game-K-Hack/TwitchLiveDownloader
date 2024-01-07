@@ -23,6 +23,7 @@ download_img = PhotoImage(file="./images/downloads.png")
 download_icon = download_img.subsample(15)
 stop_image = PhotoImage(file="./images/stop.png")
 stop_icon = stop_image.subsample(15)
+root.iconbitmap("./images/icon.ico")
 
 def change_status(is_download:bool) -> None:
     dwld.is_start = is_download
